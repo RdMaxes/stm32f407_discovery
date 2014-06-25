@@ -1,7 +1,7 @@
-#ifndef TIMER2_H
-#define TIMER2_H
+#ifndef TIMER3_H
+#define TIMER3_H
 //extern variables
 
 //function declaration
-void timer2_pwm_init(uint16_t period, uint16_t dutycycle);
+void Timer3_Interrupt_Init(uint16_t period, uint16_t prescaler);
 #endif
