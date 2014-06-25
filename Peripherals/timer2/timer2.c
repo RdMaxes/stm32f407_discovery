@@ -3,7 +3,7 @@
 
 
 //timer2 configuration pwm output at channel 1
-//APB1 bus clock is 42 MHz 
+//APB1 bus clock is running at 42 MHz 
 //@ uint16_t period: pwm period(us)
 //@ uint16_t dutycycle: pwm dutycycle(us)
 void timer2_pwm_init(uint16_t period, uint16_t dutycycle)
@@ -15,7 +15,7 @@ void timer2_pwm_init(uint16_t period, uint16_t dutycycle)
     //timebase configuration
     RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
     TIM_TimeBaseStructure.TIM_Period = period-1;
-    TIM_TimeBaseStructure.TIM_Prescaler = 42-1;
+    TIM_TimeBaseStructure.TIM_Prescaler = 84-1;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;;
     TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
     TIM_TimeBaseStructure.TIM_RepetitionCounter = 0;
@@ -26,8 +26,8 @@ void timer2_pwm_init(uint16_t period, uint16_t dutycycle)
     TIM_OCInitStruct.TIM_Pulse = dutycycle;
     TIM_OCInitStruct.TIM_OutputState = TIM_OutputState_Enable;
     TIM_OCInitStruct.TIM_OCPolarity = TIM_OCPolarity_High;
-    TIM_OC2Init(TIM2, &TIM_OCInitStruct);
-    TIM_OC2PreloadConfig(TIM2, TIM_OCPreload_Enable);
+    TIM_OC1Init(TIM2, &TIM_OCInitStruct);
+    TIM_OC1PreloadConfig(TIM2, TIM_OCPreload_Enable);
     //pwm output pin configuration 
     RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, ENABLE);
 
