@@ -16,7 +16,7 @@ CMSIS=../../STM_Lib/CMSIS
 ST=../../STM_Lib/STM32F4xx_StdPeriph_Driver
 STARTUP=./startup_stm32f4xx.S
 #Linker
-CFLAGS= stm32_flash.ld
+CFLAGS= -Wl,-T,stm32_flash.ld
 #Source Files
 SRC+=	$(CMSIS)/system_stm32f4xx.c \
         $(ST)/src/misc.c \
@@ -36,8 +36,9 @@ CFLAGS_INCLUDE=-I./ \
 	-I$(ST)/inc \
 #============================================================================#
 #User's Application
-PERIPHERAL = ../../Peripherals
+PERIPHERAL=../../Peripherals
 HARDWARE=../../Hardware
+USER_LIB=../../User_Lib
 
 #User Source Files
 SRC+=	./main.c \
