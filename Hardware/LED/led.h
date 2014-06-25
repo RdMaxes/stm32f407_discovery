@@ -29,6 +29,19 @@
 	#define LED_BLUE_PIN				GPIO_Pin_15
 #endif
 
+//LED Operation
+#define LED_GREEN_ON()					GPIO_SetBits(LED_GREEN_PORT, LED_GREEN_PIN)
+#define LED_GREEN_OFF()					GPIO_ResetBits(LED_GREEN_PORT, LED_GREEN_PIN)
+
+#define LED_ORANGE_ON()					GPIO_SetBits(LED_ORANGE_PORT, LED_ORANGE_PIN)
+#define LED_ORANGE_OFF()				GPIO_ResetBits(LED_ORANGE_PORT, LED_ORANGE_PIN)
+
+#define LED_BLUE_ON()					GPIO_SetBits(LED_BLUE_PORT, LED_BLUE_PIN)
+#define LED_BLUE_OFF()					GPIO_ResetBits(LED_BLUE_PORT, LED_BLUE_PIN)
+
+#define LED_RED_ON()					GPIO_SetBits(LED_RED_PORT, LED_RED_PIN)
+#define LED_RED_OFF()					GPIO_ResetBits(LED_RED_PORT, LED_RED_PIN)
+
 //function declaration
 void LED_Init(void);
 #endif
