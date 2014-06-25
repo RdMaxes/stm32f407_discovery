@@ -36,14 +36,17 @@ CFLAGS_INCLUDE=-I./ \
 	-I$(ST)/inc \
 #============================================================================#
 #User's Application
-PERIPHERAL = ../../Peripherals
+PERIPHERAL=../../Peripherals
 HARDWARE=../../Hardware
+USER_LIB=../../User_Lib
 
 #User Source Files
 SRC+=	./main.c \
+	$(HARDWARE)/LED/led.c
 
 #User Header Files
 CFLAGS_INCLUDE+=-I./ \
+		-I$(HARDWARE)/LED
 
 #============================================================================# 
 CFLAGS_DEFINE= \
