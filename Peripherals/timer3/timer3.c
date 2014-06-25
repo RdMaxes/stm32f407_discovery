@@ -5,7 +5,7 @@
 //APB1 bus clock is running at 84 MHz 
 //@ uint16_t period: pwm period(us)
 //@ uint16_t dutycycle: pwm dutycycle(us)
-void Timer3_Interrupt_Init(uint16_t period, uint16_t prescaler);
+void Timer3_Interrupt_Init(uint16_t period, uint16_t prescaler)
 {
     NVIC_InitTypeDef NVIC_InitStructure;
     TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
