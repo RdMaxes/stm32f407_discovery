@@ -43,11 +43,13 @@ USER_LIB=../../User_Lib
 #User Source Files
 SRC+=	./main.c \
 	$(HARDWARE)/LED/led.c \
-	$(PERIPHERAL)/usart2/usart2.c
+	$(PERIPHERAL)/usart2/usart2.c \
+	$(PERIPHERAL)/timer2/timer2.c
 #User Header Files
 CFLAGS_INCLUDE+=-I./ \
 		-I$(HARDWARE)/LED \
-		-I$(PERIPHERAL)/usart2
+		-I$(PERIPHERAL)/usart2 \
+		-I$(PERIPHERAL)/timer2
 #============================================================================# 
 CFLAGS_DEFINE= \
         -D USE_STDPERIPH_DRIVER \
