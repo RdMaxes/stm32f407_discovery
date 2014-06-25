@@ -12,9 +12,11 @@ OBJCOPY=arm-none-eabi-objcopy
 GDB=arm-none-eabi-gdb
 #============================================================================#
 #Stm32F4xx Standard Libraries
-CMSIS=../STM_Lib/CMSIS
-ST=../STM_Lib/STM32F4xx_StdPeriph_Driver
-STARTUP=../STM_Lib/Startup/startup_stm32f4xx.S
+CMSIS=../../STM_Lib/CMSIS
+ST=../../STM_Lib/STM32F4xx_StdPeriph_Driver
+STARTUP=./startup_stm32f4xx.S
+#Linker
+CFLAGS= stm32_flash.ld
 #Source Files
 SRC+=	$(CMSIS)/system_stm32f4xx.c \
         $(ST)/src/misc.c \
@@ -27,13 +29,15 @@ SRC+=	$(CMSIS)/system_stm32f4xx.c \
         $(ST)/src/stm32f4xx_spi.c \
         $(ST)/src/stm32f4xx_i2c.c \
         $(ST)/src/stm32f4xx_sdio.c 
+
 #Included Header Files
 CFLAGS_INCLUDE=-I./ \
 	-I$(CMSIS) \
 	-I$(ST)/inc \
 #============================================================================#
-PERIPHERAL = ../Peripherals
-HARDWARE=../Hardware
+#User's Application
+PERIPHERAL = ../../Peripherals
+HARDWARE=../../Hardware
 
 #User Source Files
 SRC+=	./main.c \
@@ -64,12 +68,15 @@ CFLAGS_WARNING= \
 		-Wbad-function-cast \
 		-Wstrict-prototypes \
 		-Wmissing-parameter-type
-CFLAGS=-g -mlittle-endian -mthumb -mcpu=cortex-m4 \
+
+CFLAGS+=-g -mlittle-endian -mthumb -mcpu=cortex-m4 \
 	-mfpu=fpv4-sp-d16 -mfloat-abi=hard \
-	-Wl,-T,stm32_flash.ld \
-	${CFLAGS_INCLUDE} ${CFLAGS_DEFINE} \
-	${CFLAGS_NEW_LIB_NANO} ${CFLAGS_WARNING}
-LDFLAGS+=-lm
+	${CFLAGS_INCLUDE} \
+        ${CFLAGS_DEFINE} \
+        ${CFLAGS_NEW_LIB_NANO} \
+        ${CFLAGS_WARNING}
+
+LDFLAGS=-lm
 #============================================================================#
 #Make all
 all:$(BIN_IMAGE)
