@@ -2,7 +2,7 @@
 #include "led.h"
 #include "usart2.h"
 
-uint8_t tx_buf[10] = {0xAA,0xAB,0xAC,0xAD,0xAE,0xAF,0xA1,0xA2,0xA3,0xA4};
+uint8_t tx_buf[20] = "Hello Wrold!! It's\r\n";
 static void delay(int32_t time)
 {
 	while(time--);

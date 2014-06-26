@@ -46,7 +46,7 @@ void Usart2_DMA_Send(uint8_t *buf, uint16_t len)
     DMA_InitStructure.DMA_Channel = DMA_Channel_4;   
     DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&USART2->DR; 
     DMA_InitStructure.DMA_BufferSize = len;
-    DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)&buf;      
+    DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)buf;      
     DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;     
     DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;   
     DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;   
@@ -57,7 +57,7 @@ void Usart2_DMA_Send(uint8_t *buf, uint16_t len)
     DMA_InitStructure.DMA_MemoryBurst = DMA_MemoryBurst_Single;  
     DMA_InitStructure.DMA_PeripheralBurst = DMA_PeripheralBurst_Single; 
     DMA_InitStructure.DMA_FIFOMode = DMA_FIFOMode_Disable;
-    DMA_InitStructure.DMA_FIFOThreshold =DMA_FIFOThreshold_Full; 
+    DMA_InitStructure.DMA_FIFOThreshold =DMA_FIFOThreshold_HalfFull; 
                 
     DMA_Init(DMA1_Stream6, &DMA_InitStructure);         
     DMA_Cmd(DMA1_Stream6,ENABLE); 
