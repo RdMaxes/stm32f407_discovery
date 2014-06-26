@@ -46,7 +46,7 @@ void Usart2_DMA_Send(uint8_t *buf, uint16_t len)
     DMA_InitStructure.DMA_Channel = DMA_Channel_4;   
     DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)&USART2->DR; 
     DMA_InitStructure.DMA_BufferSize = len;
-    DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)&buf;      
+    DMA_InitStructure.DMA_Memory0BaseAddr = (uint32_t)buf;      
     DMA_InitStructure.DMA_DIR = DMA_DIR_MemoryToPeripheral;     
     DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;   
     DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;   
