@@ -113,7 +113,7 @@ flash:
 
 #Make openocd
 openocd: flash
-	openocd -f ../debug/openocd.cfg
+	openocd -f ./openocd.cfg
 
 #Make cgdb
 cgdb:
