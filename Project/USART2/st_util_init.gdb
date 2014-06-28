@@ -1,4 +1,4 @@
-file stm32_executable.elf
-target remote :3333
+file firmware.elf
+target remote :4242
 monitor reset halt
 c
