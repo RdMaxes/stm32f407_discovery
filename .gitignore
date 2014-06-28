@@ -5,5 +5,5 @@
 *.elf
 *.md~
 Makefile~
-*.cfg
-*.gdb
+*.cfg~
+*.gdb~
