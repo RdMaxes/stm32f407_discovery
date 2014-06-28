@@ -17,6 +17,9 @@ int main(void)
 	{
 		Usart2_DMA_Send(tx_buf,sizeof(tx_buf));
 		delay(8000000);
+		LED_GREEN_ON();
+		delay(8000000);
+		LED_GREEN_OFF();		
 	}
 
 	return 0;
