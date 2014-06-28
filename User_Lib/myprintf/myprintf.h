@@ -27,7 +27,7 @@ regs Kusti, 23.10.2004
 
 #define PRINTF_LONG_SUPPORT
 
-void init_myprintf(void* putp,void (*putf) (void*,char));
+void Myprintf_Init(void* putp,void (*putf) (void*,char));
 void my_printf(char *fmt, ...);
 void my_sprintf(char* s,char *fmt, ...);
 void tfp_format(void* putp,void (*putf) (void*,char),char *fmt, va_list va);
