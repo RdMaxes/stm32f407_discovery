@@ -5,9 +5,11 @@ typedef void (*putcf) (void*,char);
 static putcf stdout_putf;
 static void* stdout_putp;
 
+#define UNUSED(p) ((p)=(p))
 #define PRINT_PORT USART2
 void myputc ( void* p, char c)
-	{		
+	{
+		UNUSED(p);		
 		while (USART_GetFlagStatus(PRINT_PORT,USART_FLAG_TC)==RESET) ;
 		PRINT_PORT->DR=c;
 	}
