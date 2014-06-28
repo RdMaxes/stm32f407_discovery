@@ -117,9 +117,6 @@ flash:
 cgdb: flash
 	cgdb -d $(GDB) -x ./st_util_init.gdb
 
-#Make gdbtui
-gdbtui:
-	$(GDB) -tui -x ./st_util_init.gdb
 #Make gdbauto
 gdbauto: cgdb
 #automatically formate
