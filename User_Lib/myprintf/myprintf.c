@@ -1,18 +1,18 @@
 #include "myprintf.h"
+#include "stm32f4xx.h"
 
 typedef void (*putcf) (void*,char);
 static putcf stdout_putf;
 static void* stdout_putp;
 
-
-#ifdef PRINTF_LONG_SUPPORT
-
-void putc ( void* p, char c)
-	{
-	while (!SERIAL_PORT_EMPTY) ;
-	SERIAL_PORT_TX_REGISTER = c;
+#define PRINT_PORT USART2
+void myputc ( void* p, char c)
+	{		
+		while (USART_GetFlagStatus(PRINT_PORT,USART_FLAG_TC)==RESET) ;
+		PRINT_PORT->DR=c;
 	}
 
+#ifdef PRINTF_LONG_SUPPORT
 static void uli2a(unsigned long int num, unsigned int base, int uc,char * bf)
 	{
 	int n=0;
@@ -39,7 +39,6 @@ static void li2a (long num, char * bf)
 		}
 	uli2a(num,10,0,bf);
 	}
-
 #endif
 
 static void ui2a(unsigned int num, unsigned int base, int uc,char * bf)
