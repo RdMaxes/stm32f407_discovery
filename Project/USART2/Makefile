@@ -28,7 +28,7 @@ SRC+=	$(CMSIS)/system_stm32f4xx.c \
         $(ST)/src/stm32f4xx_tim.c \
         $(ST)/src/stm32f4xx_spi.c \
         $(ST)/src/stm32f4xx_i2c.c \
-        $(ST)/src/stm32f4xx_sdio.c
+        $(ST)/src/stm32f4xx_sdio.c 
 
 #Included Header Files
 CFLAGS_INCLUDE=-I./ \
@@ -42,14 +42,12 @@ USER_LIB=../../User_Lib
 
 #User Source Files
 SRC+=	./main.c \
-	$(HARDWARE)/LED/led.c \
-	$(PERIPHERAL)/usart2/usart2.c \
-	$(USER_LIB)/myprintf/myprintf.c
+	$(HARDWARE)/LED/led.c
+
 #User Header Files
 CFLAGS_INCLUDE+=-I./ \
-		-I$(HARDWARE)/LED \
-		-I$(PERIPHERAL)/usart2 \
-		-I$(USER_LIB)/myprintf
+		-I$(HARDWARE)/LED
+
 #============================================================================# 
 CFLAGS_DEFINE= \
         -D USE_STDPERIPH_DRIVER \
@@ -113,12 +111,24 @@ clean:
 flash:
 	st-flash write $(BIN_IMAGE) 0x8000000
 
+#Make openocd
+openocd: flash
+	openocd -f ../debug/openocd.cfg
+
 #Make cgdb
-cgdb: flash
+cgdb:
 	cgdb -d $(GDB) -x ./st_util_init.gdb
 
+#Make gdbtui
+gdbtui:
+	$(GDB) -tui -x ./st_util_init.gdb
 #Make gdbauto
 gdbauto: cgdb
+
+#Make flash with Black Magic Probe(BMP)
+flash_bmp:
+	$(GDB) firmware.elf -x ./gdb_black_magic_probe.gdb
+
 #automatically formate
 astyle: 
 	astyle -r --exclude=lib  *.c *.h
