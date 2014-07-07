@@ -124,6 +124,11 @@ gdbtui:
 	$(GDB) -tui -x ./st_util_init.gdb
 #Make gdbauto
 gdbauto: cgdb
+
+#Make flash with Black Magic Probe(BMP)
+flash_bmp:
+	$(GDB) firmware.elf -x ./gdb_black_magic.gdb
+
 #automatically formate
 astyle: 
 	astyle -r --exclude=lib  *.c *.h
