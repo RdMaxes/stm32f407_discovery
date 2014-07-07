@@ -18,7 +18,6 @@ int main(void)
 	
 	while(1) 
 	{
-		my_printf("Hello, variable value is %d\r\n",test_var);
 		delay(8000000);
 		LED_GREEN_ON();
 		delay(8000000);
