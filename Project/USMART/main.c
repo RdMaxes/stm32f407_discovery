@@ -3,9 +3,11 @@
 #include "usart2.h"
 #include "myprintf.h"
 
+void delay(int32_t time);
+
 int32_t test_var = 343422;
 
-static void delay(int32_t time)
+void delay(int32_t time)
 {
 	while(time--);
 }
