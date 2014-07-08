@@ -15,7 +15,7 @@ void delay(int32_t time)
 
 int main(void)
 {	
-	void (*func)(void);	
+	void* func;	
 	LED_Init();
 	Usart2_Init(9600);
 	Myprintf_Init(0x00,myputc);
@@ -23,7 +23,7 @@ int main(void)
 	func = LED_blink;
 	while(1) 
 	{
-		(*func)();
+			(*(void(*)())func)();
 	}
 
 	return 0;
