@@ -6,6 +6,7 @@
 int32_t test_var = 343422;
 
 void delay(int32_t time);
+void LED_blink(void);
 
 void delay(int32_t time)
 {
@@ -14,13 +15,15 @@ void delay(int32_t time)
 
 int main(void)
 {	
+	void (*func)(void);	
 	LED_Init();
 	Usart2_Init(9600);
 	Myprintf_Init(0x00,myputc);
 	
+	func = LED_blink;
 	while(1) 
 	{
-		
+		(*func)();
 	}
 
 	return 0;
