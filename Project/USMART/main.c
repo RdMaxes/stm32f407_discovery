@@ -4,6 +4,7 @@
 #include "myprintf.h"
 
 int32_t test_var = 343422;
+typedef void (*fptrNull)(void);
 
 void delay(int32_t time);
 void LED_blink(void);
