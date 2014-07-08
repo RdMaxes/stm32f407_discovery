@@ -3,9 +3,9 @@
 #include "usart2.h"
 #include "myprintf.h"
 
-void delay(int32_t time);
-
 int32_t test_var = 343422;
+
+void delay(int32_t time);
 
 void delay(int32_t time)
 {
@@ -20,11 +20,16 @@ int main(void)
 	
 	while(1) 
 	{
-		delay(8000000);
-		LED_GREEN_ON();
-		delay(8000000);
-		LED_GREEN_OFF();		
+		
 	}
 
 	return 0;
+}
+
+void LED_blink(void)
+{
+		delay(8000000);
+		LED_GREEN_ON();
+		delay(8000000);
+		LED_GREEN_OFF();	
 }
